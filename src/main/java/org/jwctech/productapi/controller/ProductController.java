@@ -1,2 +1,7 @@
-package org.jwctech.productapi.controller;public class ProductController {
+package org.jwctech.productapi.controller;
+
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class ProductController {
 }
