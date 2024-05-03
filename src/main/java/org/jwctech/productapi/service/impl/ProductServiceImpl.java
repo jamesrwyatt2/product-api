@@ -23,4 +23,8 @@ public class ProductServiceImpl implements ProductService {
     public Product createProduct(Product product) {
         return productRepo.save(product);
     }
+
+    public void deleteProduct(Long id) {
+
+    }
 }

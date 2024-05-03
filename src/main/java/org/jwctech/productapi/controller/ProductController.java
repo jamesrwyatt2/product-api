@@ -29,4 +29,10 @@ public class ProductController {
         logger.info("Creating Product: "+product.toString());
         return productService.createProduct(product);
     }
+
+    @DeleteMapping("/{id}")
+    public String deleteProduct(@PathVariable Long id) {
+        productService.deleteProduct(id);
+        return "ok";
+    }
 }
