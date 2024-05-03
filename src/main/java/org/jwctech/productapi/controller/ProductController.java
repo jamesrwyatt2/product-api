@@ -5,6 +5,7 @@ import org.jwctech.productapi.service.ProductService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,20 +20,23 @@ public class ProductController {
     ProductService productService;
 
     @GetMapping("")
-    public List<Product> getProducts() {
-        logger.info("Getting products!");
-        return productService.getAllProducts();
+    public ResponseEntity<List<Product>> getProducts() {
+        return ResponseEntity.ok(productService.getAllProducts());
     }
 
     @PostMapping("")
     public Product createProduct(@RequestBody Product product) {
-        logger.info("Creating Product: "+product.toString());
         return productService.createProduct(product);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Product> getProduct(@PathVariable Long id) {
+        return ResponseEntity.ok(productService.getById(id));
+    }
+
     @DeleteMapping("/{id}")
-    public String deleteProduct(@PathVariable Long id) {
+    public ResponseEntity<String> deleteProduct(@PathVariable Long id) {
         productService.deleteProduct(id);
-        return "ok";
+        return ResponseEntity.ok("ok");
     }
 }
