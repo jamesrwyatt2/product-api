@@ -28,7 +28,11 @@ public class ProductServiceImpl implements ProductService {
         return productRepo.findById(id).orElse(null);
     }
 
-    public void deleteProduct(Long id) {
+    public Product updateProduct(Long id, Product product) {
+        return productRepo.save(product);
+    }
 
+    public void deleteProduct(Long id) {
+        productRepo.deleteById(id);
     }
 }
