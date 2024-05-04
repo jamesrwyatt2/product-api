@@ -1,13 +1,12 @@
 package org.jwctech.productapi.modal;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Setter
 @Getter
@@ -18,7 +17,8 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "Name may not be blank")
+    @NotBlank(message = "Name may not be blank!")
+    @Size(min = 4, max = 20, message = "Name must be between 4 and 25 characters!")
     private String name;
 
     @NotBlank
